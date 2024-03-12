@@ -2,3 +2,4 @@ colorama
 ollama
 asyncio
 prompt_toolkit
+requests
