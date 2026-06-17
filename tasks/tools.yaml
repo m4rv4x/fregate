@@ -1,0 +1,90 @@
+category: tools
+tasks:
+  - id: tool_get_weather
+    name: "Tools — Appel météo"
+    prompt: "Quelle est la météo à Paris aujourd'hui ?"
+    tools:
+      - type: function
+        function:
+          name: get_weather
+          description: "Get current weather for a city"
+          parameters:
+            type: object
+            properties:
+              city:
+                type: string
+                description: "City name"
+              units:
+                type: string
+                enum: ["celsius", "fahrenheit"]
+            required: ["city"]
+    scoring: tools
+    max_tokens: 256
+
+  - id: tool_multi_call
+    name: "Tools — Appels multiples"
+    prompt: "Donne-moi la météo à Paris, Tokyo et New York."
+    tools:
+      - type: function
+        function:
+          name: get_weather
+          description: "Get current weather for a city"
+          parameters:
+            type: object
+            properties:
+              city:
+                type: string
+                description: "City name"
+            required: ["city"]
+    scoring: tools
+    max_tokens: 512
+
+  - id: tool_choice
+    name: "Tools — Choix du bon outil"
+    prompt: "Envoie un email à john@example.com avec le sujet 'Rapport Q4' et le corps 'Voici le rapport du quatrième trimestre.'"
+    tools:
+      - type: function
+        function:
+          name: send_email
+          description: "Send an email"
+          parameters:
+            type: object
+            properties:
+              to:
+                type: string
+              subject:
+                type: string
+              body:
+                type: string
+            required: ["to", "subject", "body"]
+      - type: function
+        function:
+          name: create_calendar_event
+          description: "Create a calendar event"
+          parameters:
+            type: object
+            properties:
+              title:
+                type: string
+              date:
+                type: string
+            required: ["title", "date"]
+    scoring: tools
+    max_tokens: 256
+
+  - id: tool_no_call
+    name: "Tools — Pas d'appel quand pas nécessaire"
+    prompt: "Bonjour, comment ça va ?"
+    tools:
+      - type: function
+        function:
+          name: get_weather
+          description: "Get current weather for a city"
+          parameters:
+            type: object
+            properties:
+              city:
+                type: string
+            required: ["city"]
+    scoring: tools
+    max_tokens: 256

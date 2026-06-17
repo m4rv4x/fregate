@@ -1,0 +1,42 @@
+category: reasoning
+tasks:
+  - id: logic_portes
+    name: "Raisonnement — Logique booléenne"
+    prompt: "Trois interrupteurs (A, B, C) contrôlent trois lampes (1, 2, 3) dans une pièce voisine. Tu ne peux entrer dans la pièce qu'une seule fois. Tu peux manipuler les interrupteurs autant que tu veux avant d'entrer. Comment détermines-tu quel interrupteur contrôle quelle lampe ? Donne la stratégie complète et explique pourquoi elle fonctionne."
+    expected_contains:
+      - "chaud"
+      - "température"
+    scoring: contains
+    max_tokens: 1024
+
+  - id: math_proba
+    name: "Raisonnement — Probabilités"
+    prompt: "Un serveur a 3 disques durs. Chaque disque a 5% de chance de tomber en panne dans l'année, indépendamment des autres. Le serveur tombe en panne si au moins 2 disques tombent en panne. Quelle est la probabilité que le serveur tombe en panne dans l'année ? Montre le calcul détaillé."
+    expected_contains:
+      - "0.007"
+    scoring: contains
+    max_tokens: 1024
+
+  - id: diagnostique_reseau
+    name: "Raisonnement — Diagnostic réseau"
+    prompt: "Un utilisateur te dit : 'Je n'arrive pas à accéder au site web interne de l'entreprise depuis mon bureau, mais ça marche depuis mon téléphone sur le 4G. Mon collègue à côté de moi y accède sans problème depuis son PC.' Fais un arbre de diagnostic étape par étape. Quelles sont les 5 premières choses que tu vérifies, dans l'ordre, et pourquoi ?"
+    expected_contains:
+      - "DNS"
+      - "ping"
+    scoring: llm
+    max_tokens: 1536
+
+  - id: logique_enigme
+    name: "Raisonnement — Énigme logique"
+    prompt: "Un prisonnier doit choisir entre 3 portes. Derrière une porte se trouve la liberté, derrière les deux autres la mort. Un gardien sait quelle porte mène à la liberté. Le prisonnier choisit la porte 1. Le gardien ouvre la porte 3 (mort) et propose au prisonnier de changer pour la porte 2. Le prisonnier doit-il changer ? Explique le raisonnement mathématique."
+    expected_contains:
+      - "2/3"
+      - "changer"
+    scoring: contains
+    max_tokens: 1024
+
+  - id: reasoning_cause_effet
+    name: "Raisonnement — Chaîne causale"
+    prompt: "Analyse cette chaîne d'événements et identifie le point de défaillance le plus critique : 'Le certificat SSL a expiré → le load balancer a marqué le backend comme unhealthy → le DNS a redirigé vers le backup → le backup avait une version plus ancienne de l'API → les clients ont reçu des erreurs 422 → le monitoring n'a pas alerté car le healthcheck du backup répondait 200.'"
+    scoring: llm
+    max_tokens: 1024

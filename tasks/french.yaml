@@ -1,0 +1,39 @@
+category: french
+tasks:
+  - id: fr_accord
+    name: "Français — Accords grammaticaux"
+    prompt: "Corrige les erreurs grammaticales dans cette phrase et explique chaque correction : \"Les chevaux que j'ai vu courir dans les champs étaient magnifique. Il aurait fallu qu'il vienne plus tôt, car les fleurs qu'il a cueilli était déjà fané.\""
+    expected_contains:
+      - "vus"
+      - "magnifiques"
+      - "vînt"
+      - "cueillies"
+    scoring: contains
+    max_tokens: 1024
+
+  - id: fr_synthese
+    name: "Français — Synthèse technique"
+    prompt: "Résume en 5 bullet points les différences entre une architecture microservices et une architecture monolithique. Le texte doit être en français soutenu, sans anglicisme, et destiné à un directeur technique qui n'est pas développeur."
+    expected_contains:
+      - "microservice"
+      - "monolithe"
+    scoring: llm
+    max_tokens: 1024
+
+  - id: fr_traduction_technique
+    name: "Français — Traduction technique"
+    prompt: "Traduis ce paragraphe en français technique naturel, sans anglicisme inutile : \"The load balancer distributes incoming traffic across multiple backend servers using a round-robin algorithm. Health checks are performed every 30 seconds to detect unhealthy instances. When a server fails the health check, it is automatically removed from the pool until it recovers.\""
+    expected_contains:
+      - "répartiteur"
+      - "serveurs"
+      - "équilib"
+    scoring: llm
+    max_tokens: 1024
+
+  - id: fr_ponctuation
+    name: "Français — Ponctuation complexe"
+    prompt: "Mets la ponctuation manquante dans ce texte : \"c'est à dire que malgré les efforts déployés par l'équipe c'est à dire les développeurs les ops et les testeurs le projet c'est à dire la refonte du système de facturation n'a pas pu être livré à temps\""
+    expected_contains:
+      - "c'est-à-dire"
+    scoring: contains
+    max_tokens: 512

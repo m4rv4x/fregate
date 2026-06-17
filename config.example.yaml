@@ -1,0 +1,64 @@
+# ── Providers ─────────────────────────────────────────────
+# Uncomment and fill the providers you want to benchmark.
+# Fregate uses litellm under the hood — any provider supported
+# by litellm works. See https://docs.litellm.ai/docs/providers
+
+providers:
+  - name: ollama-local
+    type: ollama
+    base_url: http://localhost:11434
+    # models are auto-discovered from /api/tags
+
+  # - name: openai
+  #   type: openai
+  #   api_key: ${OPENAI_API_KEY}
+  #   models:
+  #     - gpt-4o
+  #     - gpt-4o-mini
+
+  # - name: anthropic
+  #   type: anthropic
+  #   api_key: ${ANTHROPIC_API_KEY}
+  #   models:
+  #     - claude-sonnet-4-20250514
+  #     - claude-haiku-4-20250414
+
+  # - name: openrouter
+  #   type: openrouter
+  #   api_key: ${OPENROUTER_API_KEY}
+  #   models:
+  #     - meta-llama/llama-4-maverick
+  #     - google/gemini-2.5-flash
+
+  # - name: groq
+  #   type: groq
+  #   api_key: ${GROQ_API_KEY}
+  #   models:
+  #     - llama-3.3-70b-versatile
+
+  # - name: custom
+  #   type: openai_compatible
+  #   base_url: https://your-endpoint.com/v1
+  #   api_key: ${CUSTOM_API_KEY}
+  #   models:
+  #     - your-model-name
+
+# ── Tasks ─────────────────────────────────────────────────
+# Built-in tasks are in tasks/ directory.
+# Add custom task files here:
+tasks_dir: ./tasks
+
+# ── Scoring ───────────────────────────────────────────────
+scoring:
+  # Use an LLM to grade open-ended responses (set to false for pure regex scoring)
+  llm_grading: true
+  # Which provider/model to use for grading (defaults to first available)
+  grader_provider: ollama-local
+  grader_model: null  # null = first available model on the grader provider
+  # Temperature for grading (lower = more consistent)
+  grader_temperature: 0.1
+
+# ── Output ────────────────────────────────────────────────
+output:
+  dir: ./reports
+  format: markdown  # markdown | json | both

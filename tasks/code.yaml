@@ -1,0 +1,61 @@
+category: code
+tasks:
+  - id: python_fibonacci
+    name: "Python — Fibonacci optimisé"
+    prompt: "Écris une fonction Python `fibonacci(n)` qui retourne le n-ième nombre de Fibonacci. La fonction doit être optimisée pour les grands n (n > 1000) sans récursion. Incluse des tests unitaires avec assert."
+    expected_contains:
+      - "def fibonacci"
+      - "assert"
+      - "fibonacci("
+    scoring: contains
+    max_tokens: 1024
+
+  - id: bash_log_parser
+    name: "Bash — Parser de logs"
+    prompt: "Écris un script bash qui lit un fichier de log nginx (format combined) et affiche les 10 IPs les plus fréquentes, le nombre total de requêtes, et le pourcentage de requêtes 4xx/5xx. Le script doit gérer les fichiers compressés (.gz)."
+    expected_contains:
+      - "#!/bin/bash"
+      - "sort"
+      - "head"
+      - "awk"
+    scoring: contains
+    max_tokens: 1536
+
+  - id: python_json_flatten
+    name: "Python — Aplatir un JSON imbriqué"
+    prompt: "Écris une fonction Python `flatten_json(nested, separator='.')` qui aplatit un dictionnaire JSON imbriqué. Exemple: flatten_json({'a': {'b': 1, 'c': {'d': 2}}}) → {'a.b': 1, 'a.c.d': 2}. Gère les listes avec des index (a.0, a.1)."
+    expected_contains:
+      - "def flatten_json"
+      - "separator"
+    scoring: contains
+    max_tokens: 1024
+
+  - id: python_sql_injection
+    name: "Python — Détecteur de SQL injection"
+    prompt: "Écris une fonction Python `is_sql_injection(input_string)` qui détecte les tentatives d'injection SQL dans une chaîne d'entrée. La fonction doit couvrir : UNION SELECT, OR 1=1, commentaires SQL (-- et #), encodage hex, et double encodage. Retourne True/False avec le type d'attaque détectée."
+    expected_contains:
+      - "def is_sql_injection"
+      - "UNION"
+      - "SELECT"
+    scoring: contains
+    max_tokens: 1536
+
+  - id: sql_join
+    name: "SQL — Requête JOIN agrégée"
+    prompt: "Écris une requête SQL qui liste les utilisateurs avec le nombre de commandes. La table 'users' a les colonnes (id, name, email). La table 'orders' a les colonnes (id, user_id, amount, created_at). Incluts les utilisateurs même s'ils n'ont aucune commande."
+    expected_contains:
+      - "JOIN"
+      - "COUNT"
+      - "GROUP BY"
+    scoring: contains
+    max_tokens: 512
+
+  - id: rust_fizzbuzz
+    name: "Rust — FizzBuzz avec pattern matching"
+    prompt: "Écris un programme Rust qui implémente FizzBuzz de 1 à 100 en utilisant le pattern matching (match). Le code doit compiler et être idiomatique Rust."
+    expected_contains:
+      - "fn main"
+      - "match"
+      - "FizzBuzz"
+    scoring: contains
+    max_tokens: 512
