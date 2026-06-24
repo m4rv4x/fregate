@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 
-> LLM benchmark suite — score models on code, reasoning, language, tools & features.
+> **LLM benchmark suite** — score models on code, reasoning, language, tools & features.
 
 Benchmark any LLM (local or cloud) on real tasks. Compare models side-by-side with automated scoring and comparative scorecards.
 
@@ -23,8 +23,8 @@ Benchmark any LLM (local or cloud) on real tasks. Compare models side-by-side wi
 ## Quick Start
 
 ```bash
-git clone https://github.com/m4rv4x/ollama-model-benchmark.git
-cd ollama-model-benchmark
+git clone https://github.com/m4rv4x/fregate.git
+cd fregate
 
 python3 -m venv venv && source venv/bin/activate
 pip install -e .
